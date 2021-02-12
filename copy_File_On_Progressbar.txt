@@ -1,0 +1,14 @@
+  Dim xNewLocataion = "E:\Test1"
+
+        Dim xFilesCount = Directory.GetFiles("E:\Test").Length
+        Dim xFilesTransferred As Integer = 0
+
+        For Each xFiles In Directory.GetFiles("E:\Test")
+
+            File.Copy(xFiles, xNewLocataion & "\" & Path.GetFileName(xFiles), True)
+            xFilesTransferred += 1
+
+            ProgressBar1.Value = xFilesTransferred * 100 / xFilesCount
+            ProgressBar1.Update()
+
+        Next
